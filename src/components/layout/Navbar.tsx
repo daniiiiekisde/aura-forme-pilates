@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, Sparkles } from 'lucide-react';
+import { ShoppingBag, Menu, Sparkles, Copy, Check, X, ArrowRight } from 'lucide-react';
 import { AudioPlayer } from './AudioPlayer';
 import { MagneticBtn } from '../common/MagneticBtn';
 
@@ -19,79 +19,142 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToast
 }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleCopyCode = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText('AURA20').catch(() => {});
+    setCopied(true);
+    onToast('✦ Código AURA20 copiado al portapapeles (-20% de cortesía)');
+    setTimeout(() => setCopied(false), 3000);
+  };
+
+  const handleApplyDiscount = () => {
+    onToast('✦ Descuento de bienvenida AURA20 aplicado');
+    onOpenBooking();
+  };
+
   return (
-    <>
-      {/* Top Announcement Bar */}
-      <div className="top-ticker">
-        <span>Nueva Temporada: Reformer Sculpt & Matcha Lounge</span>
-        <Sparkles size={11} strokeWidth={1.5} className="ticker-sparkle" />
-        <span>Grupos Reducidos (Máx. 6)</span>
-        <Sparkles size={11} strokeWidth={1.5} className="ticker-sparkle" />
-        <span>Reserva tu Sesión de Iniciación</span>
-      </div>
+    <div className="header-wrapper">
+      {/* ==================== TOP LUXURY DISCOUNT BANNER ==================== */}
+      {isBannerVisible && (
+        <aside className="top-discount-bar" aria-label="Descuento de bienvenida">
+          <div className="discount-inner">
+            <div className="discount-content">
+              <span className="discount-badge">
+                <Sparkles size={11} strokeWidth={1.5} />
+                Privilegio de Bienvenida
+              </span>
 
-      {/* Floating Glass Navbar */}
-      <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <a href="#" className="nav-logo" aria-label="Ir al inicio de AURA & FORME">
-          <span className="logo-main">AURA & FORME</span>
-          <span className="logo-sub">Atelier de Pilates ✦ Madrid</span>
-        </a>
+              <p className="discount-text">
+                Disfruta de un <strong className="discount-highlight">20% de cortesía</strong> en tu primer bono de 5 sesiones con el código:
+              </p>
 
-        <nav className="desktop-nav">
-          <ul className="nav-links">
-            <li><a href="#filosofia" className="nav-link">El Método</a></li>
-            <li><a href="#experiencia" className="nav-link">El Estudio</a></li>
-            <li><a href="#horarios" className="nav-link">Horarios</a></li>
-            <li><a href="#tarifas" className="nav-link">Membresías</a></li>
-            <li><a href="#moodboard" className="nav-link">Life Lately</a></li>
-            <li><a href="#boutique" className="nav-link">Boutique</a></li>
-            <li><a href="#faq" className="nav-link">FAQ</a></li>
-          </ul>
-        </nav>
+              <button
+                onClick={handleCopyCode}
+                className={`discount-code-pill ${copied ? 'copied' : ''}`}
+                title="Haga clic para copiar el código"
+                aria-label="Copiar código promocional AURA20"
+              >
+                <span>AURA20</span>
+                {copied ? (
+                  <Check size={12} strokeWidth={2} className="code-icon" />
+                ) : (
+                  <Copy size={12} strokeWidth={1.5} className="code-icon" />
+                )}
+              </button>
 
-        <div className="nav-actions">
-          {/* Audio 432Hz Player */}
-          <AudioPlayer onToast={onToast} />
+              <button
+                onClick={handleApplyDiscount}
+                className="discount-cta-link"
+              >
+                <span>Reservar con Descuento</span>
+                <ArrowRight size={12} strokeWidth={1.5} />
+              </button>
+            </div>
 
-          {/* Cart Trigger */}
-          <button
-            onClick={onOpenCart}
-            className="cart-trigger"
-            aria-label={`Abrir cesta con ${cartCount} productos`}
-          >
-            <ShoppingBag size={18} strokeWidth={1.5} />
-            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
-          </button>
-
-          {/* Desktop CTA */}
-          <div className="nav-cta-desktop">
-            <MagneticBtn
-              onClick={onOpenBooking}
-              className="btn btn-primary"
+            <button
+              onClick={() => setIsBannerVisible(false)}
+              className="discount-dismiss-btn"
+              aria-label="Cerrar barra de descuento"
             >
-              Reservar Sesión
-            </MagneticBtn>
+              <X size={14} strokeWidth={1.5} />
+            </button>
           </div>
+        </aside>
+      )}
 
-          {/* Mobile Menu Trigger */}
-          <button
-            onClick={onOpenMobileMenu}
-            className="mobile-menu-trigger"
-            aria-label="Abrir menú de navegación"
-          >
-            <Menu size={22} strokeWidth={1.5} />
-          </button>
+      {/* ==================== LUXURY ARCHITECTURAL NAVBAR ==================== */}
+      <header className={`navbar-header ${scrolled ? 'is-scrolled' : ''}`}>
+        <div className="navbar-container">
+          {/* Brand Logo */}
+          <a href="#" className="nav-brand" aria-label="AURA & FORME Inicio">
+            <span className="brand-title">AURA &amp; FORME</span>
+            <span className="brand-subtitle">
+              STUDIO &amp; SANCTUARY <span className="brand-sep">✦</span> MADRID
+            </span>
+          </a>
+
+          {/* Desktop Navigation Links */}
+          <nav className="nav-desktop-menu" aria-label="Navegación principal">
+            <ul className="nav-desktop-list">
+              <li><a href="#filosofia" className="nav-desktop-link">El Método</a></li>
+              <li><a href="#experiencia" className="nav-desktop-link">El Estudio</a></li>
+              <li><a href="#horarios" className="nav-desktop-link">Horarios</a></li>
+              <li><a href="#tarifas" className="nav-desktop-link">Membresías</a></li>
+              <li><a href="#moodboard" className="nav-desktop-link">Life Lately</a></li>
+              <li><a href="#boutique" className="nav-desktop-link">Boutique</a></li>
+              <li><a href="#faq" className="nav-desktop-link">FAQ</a></li>
+            </ul>
+          </nav>
+
+          {/* Action Cluster (Right) */}
+          <div className="nav-action-cluster">
+            {/* Ambient 432Hz Sound Player */}
+            <AudioPlayer onToast={onToast} />
+
+            {/* Shopping Cart Bag */}
+            <button
+              onClick={onOpenCart}
+              className="nav-cart-btn"
+              aria-label={`Abrir cesta de compras con ${cartCount} productos`}
+            >
+              <ShoppingBag size={18} strokeWidth={1.5} />
+              {cartCount > 0 && (
+                <span className="nav-cart-badge">{cartCount}</span>
+              )}
+            </button>
+
+            {/* Primary Action Button */}
+            <div className="nav-cta-wrapper">
+              <MagneticBtn
+                onClick={onOpenBooking}
+                className="btn btn-primary nav-cta-btn"
+              >
+                <span>Reservar Clase</span>
+              </MagneticBtn>
+            </div>
+
+            {/* Mobile Menu Trigger */}
+            <button
+              onClick={onOpenMobileMenu}
+              className="nav-mobile-toggle"
+              aria-label="Abrir menú de navegación móvil"
+            >
+              <Menu size={22} strokeWidth={1.5} />
+            </button>
+          </div>
         </div>
       </header>
-    </>
+    </div>
   );
 };

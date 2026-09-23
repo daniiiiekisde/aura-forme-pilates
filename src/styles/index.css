@@ -1,6 +1,6 @@
 /* ==========================================================================
    AURA & FORME — Pilates Reformer Studio & Sanctuary
-   Design System & Styling (React + Vite Edition)
+   Design System & Luxury Styling (React + Vite Edition)
    Quiet Luxury, Parisian Chic & Warm Neutral Minimalism
    ========================================================================== */
 
@@ -12,7 +12,7 @@
   --bg-secondary: #F7F3EC;
   --bg-tertiary: #EFE9DF;
   --surface: #FFFFFF;
-  --surface-glass: rgba(253, 251, 247, 0.88);
+  --surface-glass: rgba(253, 251, 247, 0.92);
   --surface-glass-dark: rgba(28, 24, 22, 0.75);
   
   --text-primary: #1C1816;
@@ -84,7 +84,7 @@ body::before {
   transform: translateX(-50%);
   width: 100vw;
   height: 600px;
-  background: radial-gradient(ellipse at top, rgba(223, 199, 165, 0.2) 0%, rgba(253, 251, 247, 0) 70%);
+  background: radial-gradient(ellipse at top, rgba(223, 199, 165, 0.18) 0%, rgba(253, 251, 247, 0) 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -194,7 +194,7 @@ button {
   background-color: var(--text-primary);
   color: var(--bg-primary);
   border: 1px solid var(--text-primary);
-  box-shadow: 0 4px 15px rgba(28, 24, 22, 0.15);
+  box-shadow: 0 4px 15px rgba(28, 24, 22, 0.12);
 }
 
 .btn-primary:hover {
@@ -206,7 +206,7 @@ button {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   color: var(--text-primary);
   border: 1px solid var(--border-light);
   backdrop-filter: blur(8px);
@@ -238,7 +238,7 @@ button {
 }
 
 /* ==========================================================================
-   React Bits: ShinyText & MagneticBtn Microinteractions
+   React Bits: Microinteractions
    ========================================================================== */
 @keyframes shinyShimmer {
   0% { background-position: 100% 0; }
@@ -259,119 +259,256 @@ button {
 }
 
 /* ==========================================================================
-   Announcement Bar & Navbar
+   HEADER WRAPPER & TOP DISCOUNT BAR (Quiet Luxury Edition)
    ========================================================================== */
-.top-ticker {
-  background-color: var(--text-primary);
-  color: var(--bg-primary);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  padding: 0.55rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  position: relative;
-  z-index: 100;
-  flex-wrap: wrap;
-}
-
-.ticker-sparkle {
-  color: var(--accent-gold);
-}
-
-.navbar {
+.header-wrapper {
   position: sticky;
-  top: 1rem;
-  z-index: 90;
-  margin: 0.5rem auto 0;
-  width: 92%;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.top-discount-bar {
+  background: #171311;
+  color: #FAF8F5;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.22);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  transition: var(--transition-fast);
+  position: relative;
+  z-index: 101;
+}
+
+.discount-inner {
   max-width: var(--container-max);
-  background: var(--surface-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-full);
-  padding: 0.75rem 1.75rem;
+  width: 92%;
+  margin: 0 auto;
+  min-height: 42px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition-smooth);
+  padding: 0.5rem 0;
 }
 
-.navbar.scrolled {
-  top: 0.5rem;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(197, 168, 128, 0.35);
+.discount-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  text-align: center;
 }
 
-.nav-logo {
+.discount-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #DFCAAE;
+  background: rgba(197, 168, 128, 0.16);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  padding: 0.22rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.discount-text {
+  font-size: 0.78rem;
+  color: #ECE7DF;
+  font-weight: 300;
+}
+
+.discount-highlight {
+  color: #DFCAAE;
+  font-weight: 600;
+}
+
+.discount-code-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.7rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px dashed rgba(197, 168, 128, 0.8);
+  border-radius: var(--radius-sm);
+  color: #FAF8F5;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.discount-code-pill:hover {
+  background: rgba(197, 168, 128, 0.25);
+  border-color: #DFCAAE;
+  color: #FFFFFF;
+}
+
+.discount-code-pill.copied {
+  background: #C5A880;
+  color: #171311;
+  border-style: solid;
+}
+
+.code-icon {
+  color: var(--accent-gold-light);
+}
+
+.discount-code-pill.copied .code-icon {
+  color: #171311;
+}
+
+.discount-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #DFCAAE;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.45);
+  padding-bottom: 1px;
+  transition: var(--transition-fast);
+}
+
+.discount-cta-link:hover {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  transform: translateX(2px);
+}
+
+.discount-dismiss-btn {
+  color: #8C827A;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: 1rem;
+  transition: color 0.2s ease;
+}
+
+.discount-dismiss-btn:hover {
+  color: #FAF8F5;
+}
+
+/* ==========================================================================
+   NAVBAR ARCHITECTURAL (Full-width Luxury Header)
+   ========================================================================== */
+.navbar-header {
+  width: 100%;
+  background: rgba(253, 251, 247, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-header.is-scrolled {
+  background: rgba(253, 251, 247, 0.97);
+  box-shadow: 0 4px 25px rgba(28, 24, 22, 0.05);
+  border-bottom-color: rgba(197, 168, 128, 0.3);
+}
+
+.navbar-container {
+  max-width: var(--container-max);
+  width: 92%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-header.is-scrolled .navbar-container {
+  height: 66px;
+}
+
+/* Brand Logo */
+.nav-brand {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  text-decoration: none;
 }
 
-.logo-main {
+.brand-title {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
-  letter-spacing: 0.12em;
+  font-size: 1.65rem;
   font-weight: 500;
+  letter-spacing: 0.14em;
   color: var(--text-primary);
   line-height: 1;
 }
 
-.logo-sub {
+.brand-subtitle {
   font-size: 0.58rem;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--accent-gold);
-  margin-top: 0.2rem;
+  margin-top: 0.28rem;
+  font-weight: 600;
 }
 
-.desktop-nav {
+.brand-sep {
+  font-size: 0.5rem;
+  vertical-align: middle;
+  margin: 0 0.15rem;
+}
+
+/* Desktop Navigation */
+.nav-desktop-menu {
   display: block;
 }
 
-.nav-links {
+.nav-desktop-list {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.25rem;
   list-style: none;
 }
 
-.nav-link {
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
+.nav-desktop-link {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-secondary);
   font-weight: 500;
   position: relative;
-  padding: 0.25rem 0;
+  padding: 0.35rem 0;
+  transition: color 0.25s ease;
 }
 
-.nav-link::after {
+.nav-desktop-link::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 1.5px;
   background-color: var(--accent-gold);
-  transition: var(--transition-fast);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 1px;
 }
 
-.nav-link:hover {
+.nav-desktop-link:hover {
   color: var(--text-primary);
 }
 
-.nav-link:hover::after {
+.nav-desktop-link:hover::after {
   width: 100%;
 }
 
-.nav-actions {
+/* Action Cluster */
+.nav-action-cluster {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -438,7 +575,7 @@ button {
 }
 
 /* Cart Trigger */
-.cart-trigger {
+.nav-cart-btn {
   position: relative;
   display: flex;
   align-items: center;
@@ -449,17 +586,19 @@ button {
   background: rgba(197, 168, 128, 0.1);
   color: var(--text-primary);
   border: 1px solid var(--border-light);
+  transition: var(--transition-fast);
 }
 
-.cart-trigger:hover {
-  background: rgba(197, 168, 128, 0.2);
+.nav-cart-btn:hover {
+  background: rgba(197, 168, 128, 0.22);
   border-color: var(--accent-gold);
+  transform: translateY(-1px);
 }
 
-.cart-count {
+.nav-cart-badge {
   position: absolute;
-  top: -4px;
-  right: -4px;
+  top: -3px;
+  right: -3px;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -470,9 +609,20 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 6px rgba(197, 168, 128, 0.4);
 }
 
-.mobile-menu-trigger {
+.nav-cta-wrapper {
+  display: block;
+}
+
+.nav-cta-btn {
+  padding: 0.72rem 1.7rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+}
+
+.nav-mobile-toggle {
   display: none;
   align-items: center;
   justify-content: center;
@@ -1192,6 +1342,14 @@ button {
   background: #EAE6E1;
   color: #8C827A;
   cursor: not-allowed;
+}
+
+.schedule-empty-card {
+  text-align: center;
+  padding: 3rem;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
 }
 
 /* ==========================================================================
@@ -2188,15 +2346,28 @@ button {
     grid-template-columns: 100px 1.2fr 1fr auto;
     gap: 1rem;
   }
-}
 
-@media (max-width: 768px) {
-  .desktop-nav, .nav-cta-desktop {
+  .nav-desktop-menu, .nav-cta-wrapper {
     display: none;
   }
 
-  .mobile-menu-trigger {
+  .nav-mobile-toggle {
     display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .discount-inner {
+    padding: 0.6rem 0;
+  }
+
+  .discount-content {
+    gap: 0.5rem;
+    font-size: 0.72rem;
+  }
+
+  .discount-text {
+    font-size: 0.72rem;
   }
 
   .moodboard-grid {
