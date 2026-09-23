@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Menu, Sparkles, Copy, Check, X, ArrowRight } from 'lucide-react';
-import { AudioPlayer } from './AudioPlayer';
 import { MagneticBtn } from '../common/MagneticBtn';
 
 interface NavbarProps {
@@ -119,9 +118,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Action Cluster (Right) */}
           <div className="nav-action-cluster">
-            {/* Ambient 432Hz Sound Player */}
-            <AudioPlayer onToast={onToast} />
-
             {/* Shopping Cart Bag */}
             <button
               onClick={onOpenCart}
