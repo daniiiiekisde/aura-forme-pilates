@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Coffee, Users, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, Heart, Coffee } from 'lucide-react';
 import { MagneticBtn } from '../common/MagneticBtn';
 import { ShinyText } from '../common/ShinyText';
 
@@ -11,80 +11,65 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
   return (
     <section className="hero-section" id="heroSection">
       <div className="container hero-grid">
+        {/* Left Column: Serene Content */}
         <div className="hero-content">
-          <div className="section-tag">
-            <Sparkles size={12} strokeWidth={1.5} className="tag-sparkle" />
-            <span>Santuario Boutique de Movimiento</span>
+          <div className="section-tag hero-tag-calm">
+            <Sparkles size={11} strokeWidth={1.5} className="tag-sparkle" />
+            <span>Santuario de Movimiento Consciente ✦ Madrid</span>
           </div>
 
-          <h1 className="hero-headline">
-            Esculpe tu fuerza,<br />
-            <em>eleva tu calma</em>
+          <h1 className="hero-headline hero-headline-calm">
+            Esculpe tu cuerpo con precisión,<br />
+            <em>encuentra tu serenidad</em>
             <span className="cursive-gold">
-              <ShinyText text="Sanctuary" speed={5} />
+              <ShinyText text="Sanctuary" speed={6} />
             </span>
           </h1>
 
-          <p className="hero-description">
-            Un espacio consagrado a la precisión anatómica, el alargamiento muscular y la serenidad interior. Nuestras camas Reformer Allegro 2 y grupos íntimos de seis personas redefinen la experiencia de tu bienestar diario.
+          <p className="hero-description hero-desc-calm">
+            Un espacio concebido para pausar el ritmo del mundo exterior y reconectar con la fuerza profunda de tu centro. Camas Reformer Allegro 2 de roble claro, luz natural envolvente y grupos reducidos de máximo seis alumnas para una práctica íntima, precisa y reparadora.
           </p>
 
-          <div className="hero-cta-group">
+          <div className="hero-cta-group hero-cta-calm">
             <MagneticBtn onClick={onOpenBooking} className="btn btn-gold">
-              <span>Reservar Primera Clase</span>
-              <ArrowRight size={15} strokeWidth={1.5} />
+              <span>Reservar Sesión de Iniciación</span>
+              <ArrowRight size={14} strokeWidth={1.5} />
             </MagneticBtn>
 
-            <a href="#quizSection" className="btn btn-secondary">
-              <span>Encontrar mi Clase Ideal</span>
-              <Sparkles size={14} strokeWidth={1.5} className="text-accent-gold" />
+            <a href="#filosofia" className="btn btn-secondary hero-btn-subtle">
+              <span>Conocer el Método</span>
             </a>
           </div>
 
-          <div className="hero-stats">
-            <div className="stat-item">
-              <h4>Allegro 2</h4>
-              <p>Reformer Studio</p>
+          {/* Serene Zen Attributes Strip */}
+          <div className="hero-zen-strip">
+            <div className="zen-item">
+              <ShieldCheck size={14} strokeWidth={1.5} className="zen-icon" />
+              <span>Máx. 6 alumnas</span>
             </div>
-            <div className="stat-item">
-              <h4>Máx. 6</h4>
-              <p>Alumnas por sesión</p>
+            <span className="zen-divider">✦</span>
+            <div className="zen-item">
+              <Heart size={14} strokeWidth={1.5} className="zen-icon" />
+              <span>Reformer Allegro 2 de roble</span>
             </div>
-            <div className="stat-item">
-              <h4>Ceremonial</h4>
-              <p>Matcha & Café Bar</p>
+            <span className="zen-divider">✦</span>
+            <div className="zen-item">
+              <Coffee size={14} strokeWidth={1.5} className="zen-icon" />
+              <span>Matcha Bar &amp; Eucalipto</span>
             </div>
           </div>
         </div>
 
+        {/* Right Column: Serene Clean Visual without distracting bouncy floating pills */}
         <div className="hero-visual">
-          <div className="hero-image-card">
+          <div className="hero-image-frame-calm">
             <img
               src="/assets/images/hero-studio.jpg"
-              alt="Interior luminoso del estudio de Pilates AURA & FORME con reformers de roble claro y luz de mañana"
-              className="hero-img"
+              alt="Estudio luminoso de Pilates Reformer con luz de sol cálida y máquinas de madera de roble"
+              className="hero-img-calm"
             />
-          </div>
-
-          {/* Floating Pill 1 */}
-          <div className="floating-pill floating-pill-1">
-            <div className="pill-icon">
-              <Users size={16} strokeWidth={1.5} />
-            </div>
-            <div className="pill-text">
-              <h5>Grupos Reducidos</h5>
-              <p>Atención personalizada</p>
-            </div>
-          </div>
-
-          {/* Floating Pill 2 */}
-          <div className="floating-pill floating-pill-2">
-            <div className="pill-icon">
-              <Coffee size={16} strokeWidth={1.5} />
-            </div>
-            <div className="pill-text">
-              <h5>Matcha & Latte Bar</h5>
-              <p>Incluido tras tu sesión</p>
+            <div className="hero-image-caption">
+              <span>SALA PRINCIPAL REFORMER ✦ LUZ NATURAL MATUTINA</span>
             </div>
           </div>
         </div>
